@@ -1,0 +1,16 @@
+<body>
+    <table id="courseList"></table>
+</body>
+
+<script>
+    fetch("http://localhost:8081/api/courses")
+        .then(r => r.json())
+        .then(data => {
+            courseList.innerHTML = data.map(item => `<tr>
+            <td>${item.courseNum}</td>
+            <td>${item.courseName}</td>
+            <td>${item.dept}</td>
+            <td><a href="details.html?courseid=${item.id}"> Details </a></td>
+        </tr>`).join("")
+        })
+</script>
